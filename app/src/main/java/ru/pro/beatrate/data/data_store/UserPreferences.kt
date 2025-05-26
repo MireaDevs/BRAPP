@@ -1,6 +1,7 @@
 package ru.pro.beatrate.data.data_store
 
 import android.content.Context
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -36,4 +37,26 @@ class UserPreferences(private val context: Context) {
     suspend fun saveToken(token: String) {
         dataStore.edit { it[stringPreferencesKey("jwt_token")] = token }
     }
+
+    suspend fun saveRole(role: String) {
+        context.dataStore.edit { preferences ->
+            preferences[stringPreferencesKey("user_role")] = role
+        }
+    }
+
+    val roleFlow: Flow<String?> = context.dataStore.data
+        .map { preferences -> preferences[stringPreferencesKey("user_role")] }
+
+    val THEME_KEY = booleanPreferencesKey("is_dark_theme")
+
+    val isDarkThemeFlow: Flow<Boolean> = dataStore.data
+        .map { preferences -> preferences[THEME_KEY] ?: false }
+
+    suspend fun saveTheme(isDark: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[THEME_KEY] = isDark
+        }
+    }
+
+
 }

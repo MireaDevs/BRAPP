@@ -68,19 +68,18 @@ fun LoginScreen(navController: NavController) {
             tonalElevation = 8.dp
         ) {
             Column(
-                modifier = Modifier
-                    .padding(24.dp),
+                modifier = Modifier.padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text("Welcome back 👋", color = Color(0xFF2D2362), style = MaterialTheme.typography.titleLarge)
+                Text("Добро пожаловать 👋", color = Color(0xFF2D2362), style = MaterialTheme.typography.titleLarge)
                 Spacer(modifier = Modifier.height(8.dp))
-                Text("Please enter your login information below to access your account", color = Color.Gray)
+                Text("Введите ваши данные для входа в аккаунт", color = Color.Gray)
 
                 Spacer(modifier = Modifier.height(24.dp))
                 OutlinedTextField(
                     value = username,
                     onValueChange = { username = it },
-                    label = { Text("Username") },
+                    label = { Text("Имя пользователя") },
                     leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) },
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -89,20 +88,13 @@ fun LoginScreen(navController: NavController) {
                 OutlinedTextField(
                     value = password,
                     onValueChange = { password = it },
-                    label = { Text("Password") },
+                    label = { Text("Пароль") },
                     leadingIcon = { Icon(Icons.Default.Lock, contentDescription = null) },
                     trailingIcon = { Icon(Icons.Default.AccountBox, contentDescription = null) },
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    "Forgot password?",
-                    color = Color(0xFF2D2362),
-                    modifier = Modifier
-                        .align(Alignment.End)
-                        .clickable { navController.navigate("ForgotPasswordScreen") }
-                )
+
 
                 Spacer(modifier = Modifier.height(24.dp))
                 Button(
@@ -110,17 +102,14 @@ fun LoginScreen(navController: NavController) {
                         loading = true
                         CoroutineScope(Dispatchers.IO).launch {
                             try {
-                                val response = RetrofitInstance.api.login(
-                                    LoginRequest(username, password)
-                                )
+                                val response = RetrofitInstance.api.login(LoginRequest(username, password))
 
                                 prefs.saveToken(response.token)
+                                prefs.saveUsername(username)
+                                prefs.saveRole(response.role)
 
                                 withContext(Dispatchers.Main) {
                                     Toast.makeText(context, "Успешный вход", Toast.LENGTH_SHORT).show()
-                                    scope.launch {
-                                        prefs.saveUsername(username)
-                                    }
                                     navController.navigate("HomeScreen") {
                                         popUpTo("LoginScreen") { inclusive = true }
                                     }
@@ -138,13 +127,13 @@ fun LoginScreen(navController: NavController) {
                     modifier = Modifier.fillMaxWidth(),
                     enabled = !loading
                 ) {
-                    Text(if (loading) "Загрузка..." else "Login", color = Color.White)
+                    Text(if (loading) "Загрузка..." else "Войти", color = Color.White)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 val annotatedText = buildAnnotatedString {
-                    append("Don’t have an account? ")
+                    append("Нет аккаунта? ")
                     pushStringAnnotation(tag = "REGISTER", annotation = "register")
                     withStyle(
                         style = SpanStyle(
@@ -153,7 +142,7 @@ fun LoginScreen(navController: NavController) {
                             textDecoration = TextDecoration.Underline
                         )
                     ) {
-                        append("Register")
+                        append("Зарегистрироваться")
                     }
                     pop()
                 }
@@ -171,3 +160,4 @@ fun LoginScreen(navController: NavController) {
         }
     }
 }
+

@@ -13,19 +13,13 @@ object BottomNavItems {
         BottomNavItem(
             label = "Главная",
             icon = Icons.Filled.Home,
-            route = "ScreenMain"//поменять
+            route = "HomeScreen"//поменять
         ),
 
         BottomNavItem(
             label = "Бронирование",
             icon = Icons.Filled.DateRange,
-            route = "ScreenCategories"//поменять
-        ),
-
-        BottomNavItem(
-            label = "Проекты",
-            icon = Icons.Filled.PlayArrow,
-            route = "ScreenFavorites"//поменять
+            route = "BookingScreen"//поменять
         ),
         BottomNavItem(
             label = "Насторойки",

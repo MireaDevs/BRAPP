@@ -313,61 +313,61 @@
 164        </receiver>
 165
 166        <activity
-166-->[androidx.compose.ui:ui-test-manifest:1.8.0] C:\Users\alesa\.gradle\caches\transforms-4\6afe0988d89af6423b9f62509517190e\transformed\ui-test-manifest-1.8.0\AndroidManifest.xml:23:9-26:79
-167            android:name="androidx.activity.ComponentActivity"
-167-->[androidx.compose.ui:ui-test-manifest:1.8.0] C:\Users\alesa\.gradle\caches\transforms-4\6afe0988d89af6423b9f62509517190e\transformed\ui-test-manifest-1.8.0\AndroidManifest.xml:24:13-63
+166-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:27:9-34:20
+167            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+167-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:28:13-99
 168            android:exported="true"
-168-->[androidx.compose.ui:ui-test-manifest:1.8.0] C:\Users\alesa\.gradle\caches\transforms-4\6afe0988d89af6423b9f62509517190e\transformed\ui-test-manifest-1.8.0\AndroidManifest.xml:25:13-36
-169            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
-169-->[androidx.compose.ui:ui-test-manifest:1.8.0] C:\Users\alesa\.gradle\caches\transforms-4\6afe0988d89af6423b9f62509517190e\transformed\ui-test-manifest-1.8.0\AndroidManifest.xml:26:13-76
-170        <activity
-170-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:27:9-34:20
-171            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
-171-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:28:13-99
-172            android:exported="true"
-172-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:29:13-36
-173            android:theme="@style/WhiteBackgroundTheme" >
-173-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:30:13-56
-174            <intent-filter android:priority="-100" >
-174-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:13-33:29
-174-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:28-51
-175                <category android:name="android.intent.category.LAUNCHER" />
-175-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:17-77
-175-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:27-74
-176            </intent-filter>
-177        </activity>
-178        <activity
-178-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:35:9-42:20
-179            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
-179-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:36:13-95
-180            android:exported="true"
-180-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:37:13-36
-181            android:theme="@style/WhiteBackgroundTheme" >
-181-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:38:13-56
-182            <intent-filter android:priority="-100" >
-182-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:13-33:29
-182-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:28-51
-183                <category android:name="android.intent.category.LAUNCHER" />
-183-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:17-77
-183-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:27-74
-184            </intent-filter>
-185        </activity>
-186        <activity
-186-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:43:9-50:20
-187            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
-187-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:44:13-103
-188            android:exported="true"
-188-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:45:13-36
-189            android:theme="@style/WhiteBackgroundDialogTheme" >
-189-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:46:13-62
-190            <intent-filter android:priority="-100" >
-190-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:13-33:29
-190-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:28-51
-191                <category android:name="android.intent.category.LAUNCHER" />
-191-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:17-77
-191-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:27-74
-192            </intent-filter>
-193        </activity>
+168-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:29:13-36
+169            android:theme="@style/WhiteBackgroundTheme" >
+169-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:30:13-56
+170            <intent-filter android:priority="-100" >
+170-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:13-33:29
+170-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:28-51
+171                <category android:name="android.intent.category.LAUNCHER" />
+171-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:17-77
+171-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:27-74
+172            </intent-filter>
+173        </activity>
+174        <activity
+174-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:35:9-42:20
+175            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+175-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:36:13-95
+176            android:exported="true"
+176-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:37:13-36
+177            android:theme="@style/WhiteBackgroundTheme" >
+177-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:38:13-56
+178            <intent-filter android:priority="-100" >
+178-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:13-33:29
+178-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:28-51
+179                <category android:name="android.intent.category.LAUNCHER" />
+179-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:17-77
+179-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:27-74
+180            </intent-filter>
+181        </activity>
+182        <activity
+182-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:43:9-50:20
+183            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+183-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:44:13-103
+184            android:exported="true"
+184-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:45:13-36
+185            android:theme="@style/WhiteBackgroundDialogTheme" >
+185-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:46:13-62
+186            <intent-filter android:priority="-100" >
+186-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:13-33:29
+186-->[androidx.test:core:1.6.1] C:\Users\alesa\.gradle\caches\transforms-4\a892eca093ae5af4ba2d8d427d3a4b75\transformed\core-1.6.1\AndroidManifest.xml:31:28-51
+187                <category android:name="android.intent.category.LAUNCHER" />
+187-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:17-77
+187-->C:\Users\alesa\OneDrive\Desktop\BRAPP\BRAPP\app\src\main\AndroidManifest.xml:25:27-74
+188            </intent-filter>
+189        </activity>
+190        <activity
+190-->[androidx.compose.ui:ui-test-manifest:1.8.0] C:\Users\alesa\.gradle\caches\transforms-4\6afe0988d89af6423b9f62509517190e\transformed\ui-test-manifest-1.8.0\AndroidManifest.xml:23:9-26:79
+191            android:name="androidx.activity.ComponentActivity"
+191-->[androidx.compose.ui:ui-test-manifest:1.8.0] C:\Users\alesa\.gradle\caches\transforms-4\6afe0988d89af6423b9f62509517190e\transformed\ui-test-manifest-1.8.0\AndroidManifest.xml:24:13-63
+192            android:exported="true"
+192-->[androidx.compose.ui:ui-test-manifest:1.8.0] C:\Users\alesa\.gradle\caches\transforms-4\6afe0988d89af6423b9f62509517190e\transformed\ui-test-manifest-1.8.0\AndroidManifest.xml:25:13-36
+193            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+193-->[androidx.compose.ui:ui-test-manifest:1.8.0] C:\Users\alesa\.gradle\caches\transforms-4\6afe0988d89af6423b9f62509517190e\transformed\ui-test-manifest-1.8.0\AndroidManifest.xml:26:13-76
 194        <activity
 194-->[androidx.compose.ui:ui-tooling-android:1.8.0] C:\Users\alesa\.gradle\caches\transforms-4\6f42c9d3e582055dcf755c927d7c2b59\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
 195            android:name="androidx.compose.ui.tooling.PreviewActivity"

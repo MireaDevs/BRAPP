@@ -10,6 +10,7 @@ import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
@@ -18,6 +19,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
@@ -40,7 +42,7 @@ import ru.pro.beatrate.data.objects.booking.ConstantsOfServices
 import ru.pro.beatrate.domain.beatrate_backend.instance.RetrofitInstance
 import java.text.SimpleDateFormat
 import java.util.*
-
+import ru.pro.beatrate.data.objects.bottomMenu.BottomNavItems
 
 @Composable
 fun BookingScreen(navController: NavController) {
@@ -54,101 +56,136 @@ fun BookingScreen(navController: NavController) {
 
     var neumann by remember { mutableStateOf(false) }
     var shureSM by remember { mutableStateOf(false) }
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState())
-    ) {
-        Spacer(modifier = Modifier.height(30.dp))
-
-        Text("Выберите дату записи", style = MaterialTheme.typography.titleLarge)
-        Spacer(modifier = Modifier.height(16.dp))
-        DatePickerFieldToModal(selectedDate = selectedDate,
-            onDateSelected = { selectedDate = it })
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("Выберите время записи", style = MaterialTheme.typography.titleLarge)
-        Spacer(modifier = Modifier.height(16.dp))
-        TimePickerContent(
-            selectedTime = selectedTime,
-            onTimeSelected = { selectedTime = it })
-
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("Выберите услугу", style = MaterialTheme.typography.titleLarge)
-        Spacer(modifier = Modifier.height(16.dp))
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState())
-        ) {
-            ServiceCheckBox(ConstantsOfServices.ServiceItems[0], vocalRecording) { vocalRecording = it }
-            ServiceCheckBox(ConstantsOfServices.ServiceItems[1], arrangements) { arrangements = it }
-            ServiceCheckBox(ConstantsOfServices.ServiceItems[2], mixingAndMastering) { mixingAndMastering = it }
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("Выберите оборудование", style = MaterialTheme.typography.titleLarge)
-        Spacer(modifier = Modifier.height(16.dp))
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState())
-        ) {
-            DeviceCheckBox(ConstantsOfDevices.DeviceItems[0], neumann) { neumann = it }
-            DeviceCheckBox(ConstantsOfDevices.DeviceItems[1], shureSM) { shureSM = it }
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("Выберите длительность сессии", style = MaterialTheme.typography.titleLarge)
-        Spacer(modifier = Modifier.height(16.dp))
-        DurationSelector(selectedHours) { selectedHours = it }
-
-        Spacer(modifier = Modifier.height(16.dp))
-        val context = LocalContext.current
-        val prefs = remember { UserPreferences(context) }
-        val coroutineScope = rememberCoroutineScope()
-
-        Button(
-            onClick = {
-                coroutineScope.launch {
-                    val username = prefs.usernameFlow.firstOrNull() ?: ""
-                    val token = prefs.tokenFlow.firstOrNull()?.let { "Bearer $it" } ?: ""
-
-                    val session = Session(
-                        username = username,
-                        date = selectedDate?.let { convertMillisToDate(it) } ?: "",
-                        time = selectedTime,
-                        arrangements = arrangements,
-                        mixing_and_mastering = mixingAndMastering,
-                        vocal_recording = vocalRecording,
-                        neumann = neumann,
-                        shuresm = shureSM,
-                        status = "В ожидании",
-                        duration = selectedHours
+    val bottomNavItems = BottomNavItems.BottomNavItems
+    var selectedItemIndex by remember { mutableStateOf(1) }
+    Scaffold(
+        bottomBar = {
+            NavigationBar {
+                bottomNavItems.forEachIndexed { index, item ->
+                    NavigationBarItem(
+                        selected = selectedItemIndex == index,
+                        onClick = {
+                            selectedItemIndex = index
+                            navController.navigate(item.route) {
+                                launchSingleTop = true
+                                restoreState = true
+                                popUpTo(navController.graph.startDestinationId) {
+                                    saveState = true
+                                }
+                            }
+                        },
+                        icon = { Icon(item.icon, contentDescription = item.label) },
+                        label = { Text(item.label) }
                     )
-
-                    try {
-                        val response = RetrofitInstance.api.createBooking(token, session)
-                        if (response.isSuccessful) {
-                            println("Бронь успешно создана: $session")
-                            // Можно показать Toast или навигацию на другой экран
-                        } else {
-                            println("Ошибка при создании брони: ${response.code()}")
-                        }
-                    } catch (e: Exception) {
-                        println("Ошибка сети: ${e.localizedMessage}")
-                    }
                 }
-            },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Создать бронь!")
+            }
         }
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
 
+            Spacer(modifier = Modifier.height(30.dp))
+
+            Text("Выберите дату записи", style = MaterialTheme.typography.titleLarge)
+            Spacer(modifier = Modifier.height(16.dp))
+            DatePickerFieldToModal(
+                selectedDate = selectedDate,
+                onDateSelected = { selectedDate = it })
+            Spacer(modifier = Modifier.height(16.dp))
+            Text("Выберите время записи", style = MaterialTheme.typography.titleLarge)
+            Spacer(modifier = Modifier.height(16.dp))
+            TimePickerContent(
+                selectedTime = selectedTime,
+                onTimeSelected = { selectedTime = it })
+
+            Spacer(modifier = Modifier.height(16.dp))
+            Text("Выберите услугу", style = MaterialTheme.typography.titleLarge)
+            Spacer(modifier = Modifier.height(16.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState())
+            ) {
+                ServiceCheckBox(
+                    ConstantsOfServices.ServiceItems[0],
+                    vocalRecording
+                ) { vocalRecording = it }
+                ServiceCheckBox(ConstantsOfServices.ServiceItems[1], arrangements) {
+                    arrangements = it
+                }
+                ServiceCheckBox(
+                    ConstantsOfServices.ServiceItems[2],
+                    mixingAndMastering
+                ) { mixingAndMastering = it }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+            Text("Выберите оборудование", style = MaterialTheme.typography.titleLarge)
+            Spacer(modifier = Modifier.height(16.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState())
+            ) {
+                DeviceCheckBox(ConstantsOfDevices.DeviceItems[0], neumann) { neumann = it }
+                DeviceCheckBox(ConstantsOfDevices.DeviceItems[1], shureSM) { shureSM = it }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+            Text("Выберите длительность сессии", style = MaterialTheme.typography.titleLarge)
+            Spacer(modifier = Modifier.height(16.dp))
+            DurationSelector(selectedHours) { selectedHours = it }
+
+            Spacer(modifier = Modifier.height(16.dp))
+            val context = LocalContext.current
+            val prefs = remember { UserPreferences(context) }
+            val coroutineScope = rememberCoroutineScope()
+
+            Button(
+                onClick = {
+                    coroutineScope.launch {
+                        val username = prefs.usernameFlow.firstOrNull() ?: ""
+                        val token = prefs.tokenFlow.firstOrNull()?.let { "Bearer $it" } ?: ""
+
+                        val session = Session(
+                            username = username,
+                            date = selectedDate?.let { convertMillisToDate(it) } ?: "",
+                            time = selectedTime,
+                            arrangements = arrangements,
+                            mixing_and_mastering = mixingAndMastering,
+                            vocal_recording = vocalRecording,
+                            neumann = neumann,
+                            shuresm = shureSM,
+                            status = "В ожидании",
+                            duration = selectedHours
+                        )
+
+                        try {
+                            val response = RetrofitInstance.api.createBooking(token, session)
+                            if (response.isSuccessful) {
+                                println("Бронь успешно создана: $session")
+                                // Можно показать Toast или навигацию на другой экран
+                            } else {
+                                println("Ошибка при создании брони: ${response.code()}")
+                            }
+                        } catch (e: Exception) {
+                            println("Ошибка сети: ${e.localizedMessage}")
+                        }
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Создать бронь!")
+            }
+            Spacer(modifier = Modifier.height(26.dp))
+
+        }
     }
 }
-
 @Composable
 fun DatePickerFieldToModal(
     selectedDate: Long?,
@@ -306,14 +343,20 @@ fun ServiceCheckBox(service: Service, checked: Boolean, onCheckedChange: (Boolea
         modifier = Modifier.width(screenWidth),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(
-            painter = painterResource(service.photo),
-            contentDescription = null,
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .sizeIn(maxHeight = 300.dp),
-            contentScale = ContentScale.Fit
-        )
+                .width(280.dp)
+                .height(280.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .background(Color.LightGray)
+        ) {
+            Image(
+                painter = painterResource(service.photo),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
         Text(service.name, fontWeight = FontWeight.Bold)
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text("Выбрать эту услугу ->")
@@ -329,14 +372,20 @@ fun DeviceCheckBox(device: Device, checked: Boolean, onCheckedChange: (Boolean) 
         modifier = Modifier.width(screenWidth),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(
-            painter = painterResource(device.photo),
-            contentDescription = null,
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .sizeIn(maxHeight = 300.dp),
-            contentScale = ContentScale.Fit
-        )
+                .width(180.dp)
+                .height(270.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .background(Color.LightGray)
+        ) {
+            Image(
+                painter = painterResource(device.photo),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
         Text(device.name, fontWeight = FontWeight.Bold)
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text("Выбрать это оборудование ->")
@@ -344,3 +393,4 @@ fun DeviceCheckBox(device: Device, checked: Boolean, onCheckedChange: (Boolean) 
         }
     }
 }
+

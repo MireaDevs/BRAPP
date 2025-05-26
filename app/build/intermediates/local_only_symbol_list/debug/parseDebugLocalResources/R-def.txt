@@ -11,6 +11,7 @@ drawable arrangements
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable logo
+drawable map
 drawable mixing_and_mastering
 drawable neumanntlm103
 drawable shuresm7b

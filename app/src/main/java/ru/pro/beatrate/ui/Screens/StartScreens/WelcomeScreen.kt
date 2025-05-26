@@ -20,12 +20,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import ru.pro.beatrate.R
-
 @Composable
 fun WelcomeScreen(
-    navController:NavController
+    navController: NavController
 ) {
-    // Используем BoxWithConstraints, чтобы динамически вычислить размер экрана для градиента
     BoxWithConstraints {
         val width = constraints.maxWidth.toFloat()
         val height = constraints.maxHeight.toFloat()
@@ -34,7 +32,6 @@ fun WelcomeScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .background(
-                    // Линейный градиент: слева-сверху (#4682B4) -> справа-снизу (#0D0D0D)
                     brush = Brush.linearGradient(
                         colors = listOf(
                             Color(0xFF4682B4),
@@ -46,19 +43,16 @@ fun WelcomeScreen(
                 )
         ) {
             Column(modifier = Modifier.fillMaxSize()) {
-                // Картинка без фона (PNG)
                 Image(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = null,
                     modifier = Modifier
                         .weight(1f)
-                        // заставляем картинку занять доступное место по высоте
                         .fillMaxWidth(),
                     contentScale = ContentScale.Fit,
                     alignment = Alignment.Center
                 )
 
-                // Нижняя плашка (#404040) с закруглёнными верхними углами
                 Surface(
                     color = Color(0xFF404040),
                     shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
@@ -70,22 +64,21 @@ fun WelcomeScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "Welcome Gobars",
-                            style = MaterialTheme.typography.titleLarge, // M3 стиль
+                            text = "Добро пожаловать в BeatRate",
+                            style = MaterialTheme.typography.titleLarge,
                             color = Color.White
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
-                            text = "Find the best grooming experience in your city\n" +
-                                    "with just one tap! Don't miss out on the haircut\n" +
-                                    "or treatment of your dreams. Let's start now!",
-                            style = MaterialTheme.typography.bodyMedium, // M3 стиль
+                            text = "Запишитесь на студийную сессию всего в пару кликов!\n" +
+                                    "Не упустите возможность создать трек своей мечты.\n" +
+                                    "Начнём прямо сейчас!",
+                            style = MaterialTheme.typography.bodyMedium,
                             color = Color.White
                         )
 
                         Spacer(modifier = Modifier.height(24.dp))
 
-                        // Кнопка "Get Started" (#4682B4) - используем M3-параметр containerColor
                         Button(
                             onClick = { navController.navigate("LoginScreen") },
                             colors = ButtonDefaults.buttonColors(
@@ -93,7 +86,7 @@ fun WelcomeScreen(
                             ),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text(text = "Get Started", color = Color.White)
+                            Text(text = "Начать", color = Color.White)
                         }
                     }
                 }
