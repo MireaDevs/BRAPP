@@ -21,3 +21,4 @@ string app_name
 style Theme.BeatRateRecAppointmentApp
 xml backup_rules
 xml data_extraction_rules
+xml network_security_config

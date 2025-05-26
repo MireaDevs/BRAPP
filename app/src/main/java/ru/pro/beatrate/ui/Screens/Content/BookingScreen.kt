@@ -29,24 +29,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.launch
+import ru.pro.beatrate.data.data_store.UserPreferences
 import ru.pro.beatrate.data.models.Device
 import ru.pro.beatrate.data.models.Service
+import ru.pro.beatrate.data.models.Session
 import ru.pro.beatrate.data.objects.booking.ConstantsOfDevices
 import ru.pro.beatrate.data.objects.booking.ConstantsOfServices
+import ru.pro.beatrate.domain.beatrate_backend.instance.RetrofitInstance
 import java.text.SimpleDateFormat
 import java.util.*
 
-data class Session(
-    val date: String,
-    val time: String,
-    val arrangements: Boolean,
-    val mixing_and_mastering: Boolean,
-    val vocal_recording: Boolean,
-    val neumann: Boolean,
-    val shuresm: Boolean,
-    val status: String,
-    val duration: Int,
-)
 
 @Composable
 fun BookingScreen(navController: NavController) {
@@ -111,25 +105,47 @@ fun BookingScreen(navController: NavController) {
         DurationSelector(selectedHours) { selectedHours = it }
 
         Spacer(modifier = Modifier.height(16.dp))
+        val context = LocalContext.current
+        val prefs = remember { UserPreferences(context) }
+        val coroutineScope = rememberCoroutineScope()
+
         Button(
             onClick = {
-                val session = Session(
-                    date = selectedDate?.let { convertMillisToDate(it) } ?: "",
-                    time = selectedTime,
-                    arrangements = arrangements,
-                    mixing_and_mastering = mixingAndMastering,
-                    vocal_recording = vocalRecording,
-                    neumann = neumann,
-                    shuresm = shureSM,
-                    status = "В ожидании",
-                    duration = selectedHours
-                )
-                println("Создана сессия: $session")
+                coroutineScope.launch {
+                    val username = prefs.usernameFlow.firstOrNull() ?: ""
+                    val token = prefs.tokenFlow.firstOrNull()?.let { "Bearer $it" } ?: ""
+
+                    val session = Session(
+                        username = username,
+                        date = selectedDate?.let { convertMillisToDate(it) } ?: "",
+                        time = selectedTime,
+                        arrangements = arrangements,
+                        mixing_and_mastering = mixingAndMastering,
+                        vocal_recording = vocalRecording,
+                        neumann = neumann,
+                        shuresm = shureSM,
+                        status = "В ожидании",
+                        duration = selectedHours
+                    )
+
+                    try {
+                        val response = RetrofitInstance.api.createBooking(token, session)
+                        if (response.isSuccessful) {
+                            println("Бронь успешно создана: $session")
+                            // Можно показать Toast или навигацию на другой экран
+                        } else {
+                            println("Ошибка при создании брони: ${response.code()}")
+                        }
+                    } catch (e: Exception) {
+                        println("Ошибка сети: ${e.localizedMessage}")
+                    }
+                }
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Создать запись!")
+            Text("Создать бронь!")
         }
+
     }
 }
 

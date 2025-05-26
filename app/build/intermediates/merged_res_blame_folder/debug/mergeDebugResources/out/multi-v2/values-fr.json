@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "ru.pro.beatrate.app-mergeDebugResources-57:/values-fr/values-fr.xml",
+            "outputFile": "ru.pro.beatrate.app-mergeDebugResources-59:/values-fr/values-fr.xml",
             "map": [
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/713a34d79386638d28345d158730f753/transformed/core-1.15.0/res/values-fr/values-fr.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\713a34d79386638d28345d158730f753\\transformed\\core-1.15.0\\res\\values-fr\\values-fr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -21,24 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/77d717e28837bb73507336df1c08cb96/transformed/foundation-release/res/values-fr/values-fr.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\4a3d7047547ec7148cae704c91fb51b7\\transformed\\ui-release\\res\\values-fr\\values-fr.xml",
                     "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,140,229",
-                        "endColumns": "84,88,94",
-                        "endOffsets": "135,224,319"
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "191,290,378,478,578,665,744,836,928,1015,1096,1181,1257,1342,1417,1495,1569,1647,1716",
+                        "endColumns": "98,87,99,99,86,78,91,91,86,80,84,75,84,74,77,73,77,68,121",
+                        "endOffsets": "285,373,473,573,660,739,831,923,1010,1091,1176,1252,1337,1412,1490,1564,1642,1711,1833"
                     },
                     "to": {
-                        "startLines": "2,86,87",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "105,8967,9056",
-                        "endColumns": "84,88,94",
-                        "endOffsets": "185,9051,9146"
+                        "startLines": "10,11,12,13,14,15,16,73,74,75,76,77,78,79,80,81,83,84,85",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "917,1016,1104,1204,1304,1391,1470,7864,7956,8043,8124,8209,8285,8370,8445,8523,8698,8776,8845",
+                        "endColumns": "98,87,99,99,86,78,91,91,86,80,84,75,84,74,77,73,77,68,121",
+                        "endOffsets": "1011,1099,1199,1299,1386,1465,1557,7951,8038,8119,8204,8280,8365,8440,8518,8592,8771,8840,8962"
                     }
                 },
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/9d3f84bbee3ae88461caaa153e000049/transformed/material3-release/res/values-fr/values-fr.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\9d3f84bbee3ae88461caaa153e000049\\transformed\\material3-release\\res\\values-fr\\values-fr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,20 +55,20 @@
                     }
                 },
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/4a3d7047547ec7148cae704c91fb51b7/transformed/ui-release/res/values-fr/values-fr.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\77d717e28837bb73507336df1c08cb96\\transformed\\foundation-release\\res\\values-fr\\values-fr.xml",
                     "from": {
-                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "191,290,378,478,578,665,744,836,928,1015,1096,1181,1257,1342,1417,1495,1569,1647,1716",
-                        "endColumns": "98,87,99,99,86,78,91,91,86,80,84,75,84,74,77,73,77,68,121",
-                        "endOffsets": "285,373,473,573,660,739,831,923,1010,1091,1176,1252,1337,1412,1490,1564,1642,1711,1833"
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,140,229",
+                        "endColumns": "84,88,94",
+                        "endOffsets": "135,224,319"
                     },
                     "to": {
-                        "startLines": "10,11,12,13,14,15,16,73,74,75,76,77,78,79,80,81,83,84,85",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "917,1016,1104,1204,1304,1391,1470,7864,7956,8043,8124,8209,8285,8370,8445,8523,8698,8776,8845",
-                        "endColumns": "98,87,99,99,86,78,91,91,86,80,84,75,84,74,77,73,77,68,121",
-                        "endOffsets": "1011,1099,1199,1299,1386,1465,1557,7951,8038,8119,8204,8280,8365,8440,8518,8592,8771,8840,8962"
+                        "startLines": "2,86,87",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "105,8967,9056",
+                        "endColumns": "84,88,94",
+                        "endOffsets": "185,9051,9146"
                     }
                 }
             ]

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "ru.pro.beatrate.app-mergeDebugResources-57:/values-en-rIN/values-en-rIN.xml",
+            "outputFile": "ru.pro.beatrate.app-mergeDebugResources-59:/values-en-rIN/values-en-rIN.xml",
             "map": [
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/9d3f84bbee3ae88461caaa153e000049/transformed/material3-release/res/values-en-rIN/values-en-rIN.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\9d3f84bbee3ae88461caaa153e000049\\transformed\\material3-release\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/713a34d79386638d28345d158730f753/transformed/core-1.15.0/res/values-en-rIN/values-en-rIN.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\713a34d79386638d28345d158730f753\\transformed\\core-1.15.0\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -38,24 +38,7 @@
                     }
                 },
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/77d717e28837bb73507336df1c08cb96/transformed/foundation-release/res/values-en-rIN/values-en-rIN.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,130,216",
-                        "endColumns": "74,85,84",
-                        "endOffsets": "125,211,296"
-                    },
-                    "to": {
-                        "startLines": "2,86,87",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "105,8606,8692",
-                        "endColumns": "74,85,84",
-                        "endOffsets": "175,8687,8772"
-                    }
-                },
-                {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/4a3d7047547ec7148cae704c91fb51b7/transformed/ui-release/res/values-en-rIN/values-en-rIN.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\4a3d7047547ec7148cae704c91fb51b7\\transformed\\ui-release\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -69,6 +52,23 @@
                         "startOffsets": "899,991,1073,1167,1266,1353,1435,7533,7622,7706,7784,7866,7939,8023,8099,8171,8342,8419,8485",
                         "endColumns": "91,81,93,98,86,81,88,88,83,77,81,72,83,75,71,69,76,65,120",
                         "endOffsets": "986,1068,1162,1261,1348,1430,1519,7617,7701,7779,7861,7934,8018,8094,8166,8236,8414,8480,8601"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\77d717e28837bb73507336df1c08cb96\\transformed\\foundation-release\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,130,216",
+                        "endColumns": "74,85,84",
+                        "endOffsets": "125,211,296"
+                    },
+                    "to": {
+                        "startLines": "2,86,87",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "105,8606,8692",
+                        "endColumns": "74,85,84",
+                        "endOffsets": "175,8687,8772"
                     }
                 }
             ]

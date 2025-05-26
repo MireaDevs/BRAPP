@@ -2,6 +2,7 @@ package ru.pro.beatrate.data.models
 
 // Модель данных для сессии звукозаписи
 data class Session(
+    val username:String,
     val date: String,
     val time: String,
     val arrangements: Boolean,

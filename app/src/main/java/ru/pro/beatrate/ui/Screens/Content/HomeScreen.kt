@@ -12,10 +12,15 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.launch
+import ru.pro.beatrate.data.data_store.UserPreferences
 import ru.pro.beatrate.data.objects.bottomMenu.BottomNavItems
 import ru.pro.beatrate.data.models.Session
+import ru.pro.beatrate.domain.beatrate_backend.instance.RetrofitInstance
 
 
 // Модель данных для новости/акции
@@ -25,26 +30,33 @@ data class NewsItem(val title: String, val description: String)
 // Главная функция-компоновка экрана
 @Composable
 fun HomeScreen(navController: NavController) {
-    // Состояние для выбранного пункта нижней навигации (по умолчанию первый)
+    val context = LocalContext.current
+    val prefs = remember { UserPreferences(context) }
+    val coroutineScope = rememberCoroutineScope()
+
     var selectedItemIndex by remember { mutableStateOf(0) }
     val bottomNavItems = BottomNavItems.BottomNavItems
 
-    // Мок-данные для списков
-    val upcomingSessions = listOf(
-        Session( "21 мая", "16:00", true,true,true,true,true, "Подтверждено",7),
-        Session( "25 мая", "14:00", true,true,true,true,true, "В ожидании",3)
-    )
-    val studioServices = listOf("Запись вокала", "Живые инструменты", "Сведение и мастеринг", "Аренда зала", "Видеосъёмка")
-    val projects = listOf("Demo_2025_May", "LiveSession_June2025")
-    val newsList = listOf(
-        NewsItem("Мастер-класс по гитаре", "Приходите 30 мая — скидка 20% для участников"),
-        NewsItem("Скидка на аренду зала", "До конца месяца аренда зала со скидкой 15%")
-    )
+    var upcomingSessions by remember { mutableStateOf<List<Session>>(emptyList()) }
+    var isLoading by remember { mutableStateOf(true) }
 
-    // Scaffold с нижней панелью навигации и основным содержимым
+    LaunchedEffect(Unit) {
+        coroutineScope.launch {
+            val token = prefs.tokenFlow.firstOrNull()?.let { "Bearer $it" } ?: return@launch
+            val username = prefs.usernameFlow.firstOrNull() ?: return@launch
+            try {
+                val response = RetrofitInstance.api.getBookingsByUser(token, username)
+                upcomingSessions = response
+            } catch (e: Exception) {
+                println("Ошибка загрузки сессий: ${e.localizedMessage}")
+            } finally {
+                isLoading = false
+            }
+        }
+    }
+
     Scaffold(
         bottomBar = {
-            // Нижняя панель навигации Material3
             NavigationBar {
                 bottomNavItems.forEachIndexed { index, item ->
                     NavigationBarItem(
@@ -57,30 +69,32 @@ fun HomeScreen(navController: NavController) {
             }
         },
         content = { innerPadding ->
-            // Основной контент экрана: прокручиваемый столбец (LazyColumn) со всеми секциями
             LazyColumn(
                 contentPadding = PaddingValues(
                     top = 16.dp,
-                    bottom = innerPadding.calculateBottomPadding() + 16.dp,  // учитываем отступ под навигацией
+                    bottom = innerPadding.calculateBottomPadding() + 16.dp,
                     start = 16.dp, end = 16.dp
                 ),
-                verticalArrangement = Arrangement.spacedBy(24.dp)  // расстояние между секциями
+                verticalArrangement = Arrangement.spacedBy(24.dp)
             ) {
-                // 1. Блок "Ваши ближайшие сессии"
                 item {
                     Spacer(modifier = Modifier.padding(top = 30.dp))
                     SectionTitle(title = "Запись")
                     Button(
                         onClick = { navController.navigate("BookingScreen") },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 8.dp)
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)
                     ) {
                         Text("Создать запись!")
                     }
                 }
-                items(upcomingSessions) { session ->
-                    SessionCard(session = session)
+                if (isLoading) {
+                    item { Text("Загрузка...") }
+                } else if (upcomingSessions.isEmpty()) {
+                    item { Text("Нет активных записей") }
+                } else {
+                    items(upcomingSessions) { session ->
+                        SessionCard(session = session)
+                    }
                 }
 
                 // 2. Блок "Услуги студии"
@@ -89,9 +103,9 @@ fun HomeScreen(navController: NavController) {
                 }
                 item {
                     LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        items(studioServices) { service ->
-                            ServiceCard(serviceName = service)
-                        }
+//                        items(studioServices) { service ->
+//                            ServiceCard(serviceName = service)
+//                        }
                     }
                 }
 
@@ -99,9 +113,9 @@ fun HomeScreen(navController: NavController) {
                 item {
                     SectionTitle(title = "Ваши проекты")
                 }
-                items(projects) { projectName ->
-                    ProjectItemRow(projectName = projectName)
-                }
+//                items(projects) { projectName ->
+//                    ProjectItemRow(projectName = projectName)
+//                }
                 item {
                     // Кнопка "Загрузить новый трек"
                     Button(
@@ -118,9 +132,9 @@ fun HomeScreen(navController: NavController) {
                 item {
                     SectionTitle(title = "Новое в студии")
                 }
-                items(newsList) { news ->
-                    NewsCard(newsItem = news)
-                }
+//                items(newsList) { news ->
+//                    NewsCard(newsItem = news)
+//                }
 
                 // 5. Блок с геолокацией студии
                 item {

@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import ru.pro.beatrate.ui.Screens.AuthScreens.AuthScreen
 import ru.pro.beatrate.ui.Screens.AuthScreens.LoginScreen
 import ru.pro.beatrate.ui.Screens.AuthScreens.ForgotPasswordScreen
+import ru.pro.beatrate.ui.Screens.AuthScreens.RegisterScreen
 import ru.pro.beatrate.ui.Screens.Content.BookingScreen
 import ru.pro.beatrate.ui.Screens.Content.HomeScreen
 import ru.pro.beatrate.ui.Screens.StartScreens.SplashScreen
@@ -15,7 +16,7 @@ import ru.pro.beatrate.ui.Screens.StartScreens.WelcomeScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "HomeScreen") {
+    NavHost(navController = navController, startDestination = "SplashScreen") {
         composable("SplashScreen") { SplashScreen(
             navController = navController
         ) }
@@ -35,6 +36,9 @@ fun Navigation(navController: NavHostController) {
             navController = navController
         ) }
         composable("BookingScreen") { BookingScreen(
+            navController = navController
+        ) }
+        composable("RegisterScreen") { RegisterScreen(
             navController = navController
         ) }
 

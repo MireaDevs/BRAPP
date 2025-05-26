@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "ru.pro.beatrate.app-mergeDebugResources-57:/values-sw/values-sw.xml",
+            "outputFile": "ru.pro.beatrate.app-mergeDebugResources-59:/values-sw/values-sw.xml",
             "map": [
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/9d3f84bbee3ae88461caaa153e000049/transformed/material3-release/res/values-sw/values-sw.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\9d3f84bbee3ae88461caaa153e000049\\transformed\\material3-release\\res\\values-sw\\values-sw.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/77d717e28837bb73507336df1c08cb96/transformed/foundation-release/res/values-sw/values-sw.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\77d717e28837bb73507336df1c08cb96\\transformed\\foundation-release\\res\\values-sw\\values-sw.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/713a34d79386638d28345d158730f753/transformed/core-1.15.0/res/values-sw/values-sw.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\713a34d79386638d28345d158730f753\\transformed\\core-1.15.0\\res\\values-sw\\values-sw.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/4a3d7047547ec7148cae704c91fb51b7/transformed/ui-release/res/values-sw/values-sw.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\4a3d7047547ec7148cae704c91fb51b7\\transformed\\ui-release\\res\\values-sw\\values-sw.xml",
                     "from": {
                         "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

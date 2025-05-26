@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "ru.pro.beatrate.app-mergeDebugResources-57:/values-gu/values-gu.xml",
+            "outputFile": "ru.pro.beatrate.app-mergeDebugResources-59:/values-gu/values-gu.xml",
             "map": [
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/4a3d7047547ec7148cae704c91fb51b7/transformed/ui-release/res/values-gu/values-gu.xml",
-                    "from": {
-                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "200,292,374,467,566,653,739,840,927,1013,1096,1179,1254,1338,1413,1488,1563,1639,1705",
-                        "endColumns": "91,81,92,98,86,85,100,86,85,82,82,74,83,74,74,74,75,65,115",
-                        "endOffsets": "287,369,462,561,648,734,835,922,1008,1091,1174,1249,1333,1408,1483,1558,1634,1700,1816"
-                    },
-                    "to": {
-                        "startLines": "10,11,12,13,14,15,16,73,74,75,76,77,78,79,80,81,83,84,85",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "917,1009,1091,1184,1283,1370,1456,7688,7775,7861,7944,8027,8102,8186,8261,8336,8512,8588,8654",
-                        "endColumns": "91,81,92,98,86,85,100,86,85,82,82,74,83,74,74,74,75,65,115",
-                        "endOffsets": "1004,1086,1179,1278,1365,1451,1552,7770,7856,7939,8022,8097,8181,8256,8331,8406,8583,8649,8765"
-                    }
-                },
-                {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/77d717e28837bb73507336df1c08cb96/transformed/foundation-release/res/values-gu/values-gu.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\77d717e28837bb73507336df1c08cb96\\transformed\\foundation-release\\res\\values-gu\\values-gu.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/9d3f84bbee3ae88461caaa153e000049/transformed/material3-release/res/values-gu/values-gu.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\713a34d79386638d28345d158730f753\\transformed\\core-1.15.0\\res\\values-gu\\values-gu.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,149,252,349,451,553,651,773",
+                        "endColumns": "93,102,96,101,101,97,121,100",
+                        "endOffsets": "144,247,344,446,548,646,768,869"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6,7,8,9,82",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "199,293,396,493,595,697,795,8411",
+                        "endColumns": "93,102,96,101,101,97,121,100",
+                        "endOffsets": "288,391,488,590,692,790,912,8507"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\9d3f84bbee3ae88461caaa153e000049\\transformed\\material3-release\\res\\values-gu\\values-gu.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,20 +55,20 @@
                     }
                 },
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/713a34d79386638d28345d158730f753/transformed/core-1.15.0/res/values-gu/values-gu.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\4a3d7047547ec7148cae704c91fb51b7\\transformed\\ui-release\\res\\values-gu\\values-gu.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,149,252,349,451,553,651,773",
-                        "endColumns": "93,102,96,101,101,97,121,100",
-                        "endOffsets": "144,247,344,446,548,646,768,869"
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "200,292,374,467,566,653,739,840,927,1013,1096,1179,1254,1338,1413,1488,1563,1639,1705",
+                        "endColumns": "91,81,92,98,86,85,100,86,85,82,82,74,83,74,74,74,75,65,115",
+                        "endOffsets": "287,369,462,561,648,734,835,922,1008,1091,1174,1249,1333,1408,1483,1558,1634,1700,1816"
                     },
                     "to": {
-                        "startLines": "3,4,5,6,7,8,9,82",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "199,293,396,493,595,697,795,8411",
-                        "endColumns": "93,102,96,101,101,97,121,100",
-                        "endOffsets": "288,391,488,590,692,790,912,8507"
+                        "startLines": "10,11,12,13,14,15,16,73,74,75,76,77,78,79,80,81,83,84,85",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "917,1009,1091,1184,1283,1370,1456,7688,7775,7861,7944,8027,8102,8186,8261,8336,8512,8588,8654",
+                        "endColumns": "91,81,92,98,86,85,100,86,85,82,82,74,83,74,74,74,75,65,115",
+                        "endOffsets": "1004,1086,1179,1278,1365,1451,1552,7770,7856,7939,8022,8097,8181,8256,8331,8406,8583,8649,8765"
                     }
                 }
             ]

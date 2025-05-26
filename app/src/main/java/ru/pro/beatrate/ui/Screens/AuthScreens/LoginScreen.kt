@@ -1,40 +1,51 @@
 package ru.pro.beatrate.ui.Screens.AuthScreens
 
-
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import ru.pro.beatrate.R
+import ru.pro.beatrate.data.data_store.UserPreferences
+import ru.pro.beatrate.domain.beatrate_backend.instance.RetrofitInstance
+import ru.pro.beatrate.domain.beatrate_backend.models.LoginRequest
 
 @Composable
 fun LoginScreen(navController: NavController) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val prefs = remember { UserPreferences(context) }
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var loading by remember { mutableStateOf(false) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -54,7 +65,8 @@ fun LoginScreen(navController: NavController) {
                 .fillMaxSize()
                 .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)),
             color = Color.White,
-            tonalElevation = 8.dp        ) {
+            tonalElevation = 8.dp
+        ) {
             Column(
                 modifier = Modifier
                     .padding(24.dp),
@@ -66,8 +78,8 @@ fun LoginScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
+                    value = username,
+                    onValueChange = { username = it },
                     label = { Text("Username") },
                     leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) },
                     modifier = Modifier.fillMaxWidth()
@@ -75,8 +87,8 @@ fun LoginScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(16.dp))
                 OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
+                    value = password,
+                    onValueChange = { password = it },
                     label = { Text("Password") },
                     leadingIcon = { Icon(Icons.Default.Lock, contentDescription = null) },
                     trailingIcon = { Icon(Icons.Default.AccountBox, contentDescription = null) },
@@ -94,15 +106,67 @@ fun LoginScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
                 Button(
-                    onClick = {  },
+                    onClick = {
+                        loading = true
+                        CoroutineScope(Dispatchers.IO).launch {
+                            try {
+                                val response = RetrofitInstance.api.login(
+                                    LoginRequest(username, password)
+                                )
+
+                                prefs.saveToken(response.token)
+
+                                withContext(Dispatchers.Main) {
+                                    Toast.makeText(context, "Успешный вход", Toast.LENGTH_SHORT).show()
+                                    scope.launch {
+                                        prefs.saveUsername(username)
+                                    }
+                                    navController.navigate("HomeScreen") {
+                                        popUpTo("LoginScreen") { inclusive = true }
+                                    }
+                                }
+                            } catch (e: Exception) {
+                                withContext(Dispatchers.Main) {
+                                    Toast.makeText(context, "Ошибка: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                                }
+                            } finally {
+                                loading = false
+                            }
+                        }
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2D2362)),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = !loading
                 ) {
-                    Text("Login", color = Color.White)
+                    Text(if (loading) "Загрузка..." else "Login", color = Color.White)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
-                Text("Don’t have an account? Register", color = Color.Gray)
+
+                val annotatedText = buildAnnotatedString {
+                    append("Don’t have an account? ")
+                    pushStringAnnotation(tag = "REGISTER", annotation = "register")
+                    withStyle(
+                        style = SpanStyle(
+                            color = Color(0xFF2D2362),
+                            fontWeight = FontWeight.Bold,
+                            textDecoration = TextDecoration.Underline
+                        )
+                    ) {
+                        append("Register")
+                    }
+                    pop()
+                }
+
+                ClickableText(
+                    text = annotatedText,
+                    onClick = { offset ->
+                        annotatedText.getStringAnnotations("REGISTER", offset, offset)
+                            .firstOrNull()?.let {
+                                navController.navigate("RegisterScreen")
+                            }
+                    }
+                )
             }
         }
     }

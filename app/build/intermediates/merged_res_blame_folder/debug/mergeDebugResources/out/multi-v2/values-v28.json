@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "ru.pro.beatrate.app-mergeDebugResources-57:/values-v28/values-v28.xml",
+            "outputFile": "ru.pro.beatrate.app-mergeDebugResources-59:/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "/Users/ilamalaev/.gradle/caches/transforms-4/a892eca093ae5af4ba2d8d427d3a4b75/transformed/core-1.6.1/res/values-v28/values.xml",
+                    "source": "C:\\Users\\alesa\\.gradle\\caches\\transforms-4\\a892eca093ae5af4ba2d8d427d3a4b75\\transformed\\core-1.6.1\\res\\values-v28\\values.xml",
                     "from": {
                         "startLines": "4,13",
                         "startColumns": "0,0",
